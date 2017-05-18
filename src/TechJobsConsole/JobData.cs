@@ -31,7 +31,7 @@ namespace TechJobsConsole
             {
                 string aValue = job[column];
 
-                if (!values.Contains(aValue, System.StringComparer.OrdinalIgnoreCase))
+                if (!values.Contains(aValue))
                 {
                     values.Add(aValue);
                 }
@@ -49,8 +49,9 @@ namespace TechJobsConsole
             foreach (Dictionary<string, string> row in AllJobs)
             {
                 string aValue = row[column];
+                aValue = aValue.ToUpper();
 
-                if (aValue.Contains(value, System.StringComparer.OrdinalIgnoreCase))
+                if (aValue.Contains(value.ToUpper()))
                 {
                     jobs.Add(row);
                 }
@@ -70,9 +71,11 @@ namespace TechJobsConsole
                 foreach (KeyValuePair<string, string> kvp in row)
                 {
                     string dvalue = kvp.Value;
-                    if (dvalue == value)
+                    dvalue = dvalue.ToUpper();
+
+                    if (dvalue.Contains(value.ToUpper()))
                     {
-                        if (!jobs.Contains(row, System.StringComparer.OrdinalIgnoreCase))
+                        if (!jobs.Contains(row))
                         {
                             jobs.Add(row);
                         }
